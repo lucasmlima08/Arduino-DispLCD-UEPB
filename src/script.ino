@@ -22,7 +22,7 @@ byte segmentos[7] = { a,b,c,d,e,f,g };
 byte digitos[4] = { dig1,dig2,dig3,dig4 };
  
 // Array de bits dos números
-byte bitsNumeros[10][7] = { { 0,1,1,1,1,1,0 },  // = U
+byte bitsNumeros[4][7] = { { 0,1,1,1,1,1,0 },  // = U
                             { 1,0,0,1,1,1,1 },  // = E
                             { 1,1,0,0,1,1,1 },  // = P
                             { 1,1,1,1,1,1,1 },  // = B
