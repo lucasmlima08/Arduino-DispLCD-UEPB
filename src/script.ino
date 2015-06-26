@@ -1,24 +1,27 @@
-// Ponto.
-int dp = 6;
+// Ponto 
+int dp = 5;
  
-// Segmentos.
-int a = 18;
-int b = 14;
-int c = 7;
-int d = 1;
-int e = 0;
-int f = 17;
-int g = 8;
+// Segmentos
+int a = 2;
+int b = 4;
+int c = 10;
+int d = 9;
+int e = 8;
+int f = 3;
+int g = 6;
  
-// Dígitos.
-int dig1 = 19;
-int dig2 = 16;
-int dig3 = 15;
-int dig4 = 9;
+// Digitos
+int dig1 = 11;
+int dig2 = 7;
+int dig3 = 12;
+int dig4 = 1;
  
 int buttonState = 0;
-
+ 
+// Array de segmentos.
 byte segmentos[7] = { a,b,c,d,e,f,g };
+
+// Array de dígitos.
 byte digitos[4] = { dig1,dig2,dig3,dig4 };
  
 // Array de bits dos números
@@ -54,49 +57,47 @@ void desabilitarDigitos()
       digitalWrite(dig4, HIGH);    
 }
 
+
+boolean infinito = true;
 void setup()
 {
-    pinMode(dp, OUTPUT);
- 
     // Iniciando pinos do arduino.
-    for(acm=0; acm < sizeof(segmentos); acm++)     
-        pinMode(segmentos[acm], OUTPUT);
-        
-    // Iniciando pinos do arduino.
-    for(acm=0; acm < sizeof(digitos); acm++)     
-        pinMode(digitos[acm], OUTPUT);
+    for(acm=1; acm <= 12; acm++)     
+        pinMode(acm,OUTPUT);
     
+    while (infinito == true)
+        loopInfinito();
 }
  
-void loop()
-{
-    digitalWrite(dp, HIGH);
-    desabilitarDigitos();
-    habilitarDigito(1);
-    construirSegmentosDigitos(0);
-    delay(5);
-    desabilitarDigitos();
-    habilitarDigito(2);
-    construirSegmentosDigitos(1);
-    delay(5);
-    desabilitarDigitos();
-    habilitarDigito(3);
-    construirSegmentosDigitos(2);
-    delay(5);
-    desabilitarDigitos();
-    habilitarDigito(4);
-    construirSegmentosDigitos(3);
-    delay(5);
-}
+void loop(){}
 
 // Imprime o número no display a partir dos segmentos do array.
 void construirSegmentosDigitos(int numero)
 {
-      for (acmSegmentos=0; acmSegmentos < 7; acmSegmentos++){ // Com 7 segmentos.
-          if (bitsNumeros[numero][acmSegmentos] == 1){
+      for (acmSegmentos=0; acmSegmentos < 7; acmSegmentos++) // Com 7 segmentos.
+      {
+          if (bitsNumeros[numero][acmSegmentos] == 1)
               digitalWrite(segmentos[acmSegmentos], HIGH);
-          } else {
+          else
               digitalWrite(segmentos[acmSegmentos], LOW);
-          }
       }
+}
+// Laço de número até o valor máximo.
+void loopInfinito(){
+    /*desabilitarDigitos();
+    habilitarDigito(1);
+    construirSegmentosDigitos(0);
+    delay(3);
+    desabilitarDigitos();
+    habilitarDigito(2);
+    construirSegmentosDigitos(1);
+    delay(3);
+    desabilitarDigitos();
+    habilitarDigito(3);
+    construirSegmentosDigitos(2);
+    delay(3);
+    desabilitarDigitos();
+    habilitarDigito(4);*/
+    construirSegmentosDigitos(3);
+    //delay(3);
 }
